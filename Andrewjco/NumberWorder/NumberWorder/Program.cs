@@ -1,15 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NumberWorder
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        public const string Usage =
+            "Expects a single numeric parameter. The application prints each character in the number as a word. e.g. numberworder.exe 1234 prints ONETWOTHREEFOUR";
+
+        private static void Main(string[] args)
         {
+            if (args.Length != 1)
+            {
+                Console.WriteLine(Usage);
+                return;
+            }
+
+            try
+            {
+                var numberWordProcessor = new NumberWordProcessor();
+                Console.WriteLine(numberWordProcessor.ConvertNumbersToWords(args[0]));
+            }
+            catch (Exception)
+            {
+                Console.WriteLine(Usage);
+            }
         }
     }
 }
